@@ -18,36 +18,6 @@
     justify-content: center;
 }
 
-.card.type-normal { background-color: #C2C2A1; }
-
-.card.type-ground { background-color: #B1736C; }
-
-.card.type-poison { background-color: #7C538C; }
-
-.card.type-grass { background-color: #48D0B0; }
-
-.card.type-fire { background-color: #FB6C6C; }
-
-.card.type-water { background-color: #609FB5; }
-
-.card.type-electric { background-color: #FFD86F; }
-
-.card.type-fairy { background-color: #f469a9; }
-
-.card.type-bug { background-color: #C3CE75; }
-
-.card.type-fighting { background-color: #d6b591; }
-
-.card.type-psychic { background-color: #9B7FA6; }
-
-.card.type-ice { background-color: #7FCCEC; }
-
-.card.type-rock { background-color: #a6aab6; }
-
-.card.type-dragon { background-color: #F9BE00; }
-
-
-
 .card .card-title
 {
     align-self: flex-start;

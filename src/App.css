@@ -23,3 +23,34 @@ body
     padding-left: 1rem;
     color: #444;
 }
+
+/*
+    Pokemon type colors
+*/
+.type-normal { background-color: #C2C2A1; }
+
+.type-ground { background-color: #B1736C; }
+
+.type-poison { background-color: #7C538C; }
+
+.type-grass { background-color: #48D0B0; }
+
+.type-fire { background-color: #FB6C6C; }
+
+.type-water { background-color: #609FB5; }
+
+.type-electric { background-color: #FFD86F; }
+
+.type-fairy { background-color: #f469a9; }
+
+.type-bug { background-color: #C3CE75; }
+
+.type-fighting { background-color: #d6b591; }
+
+.type-psychic { background-color: #9B7FA6; }
+
+.type-ice { background-color: #7FCCEC; }
+
+.type-rock { background-color: #a6aab6; }
+
+.type-dragon { background-color: #F9BE00; }

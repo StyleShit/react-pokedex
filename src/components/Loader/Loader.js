@@ -4,8 +4,8 @@ import './Loader.css';
 function Loader()
 {
     return (
-        <div>
-            Loading...
+        <div className="loader">
+            Catching 'em all...
         </div>
     )
 }

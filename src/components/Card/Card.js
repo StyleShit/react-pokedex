@@ -17,6 +17,9 @@ function Card({ pokemon: { name, id, sprites, types } })
         <div className="card-container">
             <div className={ `card ${ cssClass }` }>
 
+                <div className="bg-pokeball"></div>
+                <span className="pokemon-id">{ paddedId }</span>
+
                 <div className="card-title">
                     <h2>
                         { name }
@@ -31,9 +34,9 @@ function Card({ pokemon: { name, id, sprites, types } })
                     </div>
                 </div>
 
-                <img alt={ name } src={ imgURL } />
-
-                <span className="pokemon-id">{ paddedId }</span>
+                <div className="pokemon-image">
+                    <img alt={ name } src={ imgURL } />
+                </div>
 
             </div>
         </div>

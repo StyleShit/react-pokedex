@@ -7,6 +7,7 @@
     padding: 2rem;
     position: relative;
     z-index: 2;
+    animation: 0.3s pull-up both ease-out .2s;
 }
 
 .details .pokemon-image
@@ -20,6 +21,7 @@
     height: auto;
     max-height: 20vh;
     filter: drop-shadow( 0 0 10px rgba( 0,0,0,.2 ) );
+    animation: 0.3s fade-in ease-out .5s both;
 }
 
 .details .tabs-switch-container

@@ -117,3 +117,21 @@ body
     from { transform: rotate( 0 ); }
     to { transform: rotate( 360deg ); }
 }
+
+@keyframes pull-up-center
+{
+    from { transform: translateY( 50% ) translateX( -50% ); opacity: 0; }
+    to { transform: translateY( 0 ) translateX( -50% ); opacity: 1; }
+}
+
+@keyframes pull-up
+{
+    from { transform: translateY( 10% ); opacity: 0; }
+    to { transform: translateY( 0 ); opacity: 1; }
+}
+
+@keyframes fade-in
+{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

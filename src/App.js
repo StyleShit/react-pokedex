@@ -63,7 +63,7 @@ function App()
 			</h1>
 
 			{ selectedPokemon !== -1 &&
-				<DetailsView pokemon={ pokemons[selectedPokemon] }/>
+				<DetailsView pokemon={ pokemons[selectedPokemon] } setSelectedPokemon={ setSelectedPokemon } />
 			}
 
 			{ isLoading 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.css';
 
-function Card({ pokemon: { name, id, sprites, types } })
+function Card({ pokemon: { name, id, sprites, types }, setSelectedPokemon })
 {
     // get pokemon image
     const imgURL = sprites.other.dream_world.front_default;
@@ -14,7 +14,7 @@ function Card({ pokemon: { name, id, sprites, types } })
 
     // render
     return (
-        <div className="card-container">
+        <div className="card-container" onClick={ () => { setSelectedPokemon( id - 1 ) } }>
             <div className={ `card ${ cssClass }` }>
 
                 <div className="bg-pokeball"></div>

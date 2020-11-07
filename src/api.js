@@ -24,3 +24,15 @@ export const fetchPokemonData = async ( id ) => {
     return apiCall( `pokemon/${ id }` );
 
 }
+
+
+// fetch pokemon evolutions
+export const fetchPokemonEvolutionChain = async ( id ) => {
+
+    return apiCall( `pokemon-species/${ id }` )
+    .then(( data ) => {
+        const newId = data.evolution_chain.url.match( /\/(\d+)\// )[1];
+        return apiCall( `evolution-chain/${ newId }` );
+    });
+
+}

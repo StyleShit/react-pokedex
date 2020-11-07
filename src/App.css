@@ -80,12 +80,12 @@ body
     justify-content: center;
     right: -10px;
     bottom: -10px;
+    font-size: 10px;
+    color: rgba( 255,255,255,.2 );
 }
 
 .bg-pokeball::before, .bg-pokeball::after
 {
-    font-size: 10px;
-    color: rgba( 255,255,255,.2 );
     display: block;
     border-radius: 100%;
 }

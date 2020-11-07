@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { fetchPokemonData, fetchPokemons } from './api';
 import { Loader } from './components/Loader';
 import { PokedexView } from './components/PokedexView';
+import DetailsView from './components/DetailsView/DetailsView';
 import './App.css';
 
 function App()
 {
 	const [ pokemons, setPokemons ] = useState( [] );
+	const [ selectedPokemon, setSelectedPokemon ] = useState( -1 );
 	const [ isLoading, setIsLoading ] = useState( false );
 
 
@@ -29,14 +31,14 @@ function App()
 		fetchPokemons( 151 ).then( async ({ results }) => {
 	
 			// iterate over each pokemon an add to array
-			await Promise.all( results.map( async ( pokemon ) => {
+			await Promise.all( results.map( async ( pokemon, i ) => {
 
 				await fetchPokemonData( pokemon.name ).then( async ( json ) => {
 
 					await setPokemons( prev => {
 						
 						let tmp = prev.slice();
-						tmp[json.order] = json;
+						tmp[i] = json;
 						return tmp;
 
 					});
@@ -60,9 +62,13 @@ function App()
 				Pokedex
 			</h1>
 
+			{ selectedPokemon !== -1 &&
+				<DetailsView pokemon={ pokemons[selectedPokemon] }/>
+			}
+
 			{ isLoading 
 				? <Loader />
-				: <PokedexView pokemons={ pokemons } />
+				: <PokedexView pokemons={ pokemons } setSelectedPokemon={ setSelectedPokemon } />
 			}
 
 		</div>

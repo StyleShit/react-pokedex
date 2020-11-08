@@ -22,6 +22,7 @@
 
 .details-view-container .card-container
 {
+    cursor: auto;
     margin: 0;
     padding: 0;
     height: auto;

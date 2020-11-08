@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Loader } from '../../Loader';
 import { fetchPokemonEvolutionChain } from '../../../api';
 
 function Evolution({ pokemon })
 {
     const [ currentEvolution, setCurrentEvolution ] = useState( [] );
     const [ evolutionChain, setEvolutionChain ] = useState( [] );
+    const [ loading, setLoading ] = useState( true );
     
     // base URL for images
     const imgBaseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
@@ -20,9 +22,12 @@ function Evolution({ pokemon })
     // load evolution on mount
     useEffect( () => {
 
+        setLoading( true );
+
         fetchPokemonEvolutionChain( pokemon.id ).then( ( data ) => {
             setEvolutionChain( [] );
             setCurrentEvolution( data.chain );
+            setLoading( false );
 
         });
 
@@ -87,7 +92,11 @@ function Evolution({ pokemon })
 
             <h3>Evolution Chain</h3>
 
-            { evolutionChain.length === 0 &&
+            { loading &&
+                <Loader />
+            }
+
+            { !loading && evolutionChain.length === 0 &&
                 <div>
                     This pokemon doesn't evolove
                 </div>

@@ -97,6 +97,11 @@
     width: 90%;
 }
 
+.details .tab-evolution .loader
+{
+    padding: 1em;
+}
+
 .details .tab-evolution .evolution-container
 {
     display: flex;

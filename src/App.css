@@ -43,6 +43,8 @@ body
 */
 .type-normal { background-color: #C2C2A1; }
 
+.type-flying { background-color: #BAB0D5; }
+
 .type-ground { background-color: #B1736C; }
 
 .type-poison { background-color: #7C538C; }
@@ -51,8 +53,6 @@ body
 
 .type-fire { background-color: #FB6C6C; }
 
-.type-water { background-color: #609FB5; }
-
 .type-electric { background-color: #FFD86F; }
 
 .type-fairy { background-color: #f469a9; }
@@ -60,6 +60,8 @@ body
 .type-bug { background-color: #C3CE75; }
 
 .type-fighting { background-color: #d6b591; }
+
+.type-water { background-color: #609FB5; }
 
 .type-psychic { background-color: #9B7FA6; }
 

@@ -5,6 +5,17 @@ function Evolution({ pokemon })
 {
     const [ currentEvolution, setCurrentEvolution ] = useState( [] );
     const [ evolutionChain, setEvolutionChain ] = useState( [] );
+    
+    // base URL for images
+    const imgBaseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
+    
+    // map trigger names to display text
+    const triggersDisplayName = {
+        'level-up': 'Lvl',
+        'trade': 'Trade',
+        'use-item': 'Use'
+    };
+
 
     // load evolution on mount
     useEffect( () => {
@@ -33,46 +44,40 @@ function Evolution({ pokemon })
         if( currentEvolution.length === 0 || currentEvolution.evolves_to.length === 0 )
             return null;
 
+
+        const nextEvolution = currentEvolution.evolves_to[0];
+        const details = nextEvolution.evolution_details[0];
+        
+
         // extract useful data
-        const current = currentEvolution.species.name;
-        const next = currentEvolution.evolves_to[0].species.name;
-        const level = currentEvolution.evolves_to[0].evolution_details[0].min_level;
-        const currentId = currentEvolution.id || extractId( currentEvolution.species.url );
-        const nextId = extractId( currentEvolution.evolves_to[0].species.url );
-
-
-        // base URL for images
-        const imgBaseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
+        const current       = currentEvolution.species.name;
+        const next          = nextEvolution.species.name;
+        const trigger       = triggersDisplayName[details.trigger.name];
+        const triggerValue  = details.min_level || details.min_happiness || details.item?.name.replace( '-', ' ' ) || '';
+        const currentId     = extractId( currentEvolution.species.url );
+        const nextId        = extractId( nextEvolution.species.url );
 
         // get images URL
-        const currentImage = imgBaseURL + currentId + '.svg';
-        const nextImage = imgBaseURL + nextId + '.svg';
+        const currentImage  = imgBaseURL + currentId + '.svg';
+        const nextImage     = imgBaseURL + nextId + '.svg';
+
 
         // set current evolution to next evolution
-        setCurrentEvolution( prev => {
-            return prev.evolves_to[0]
-        });
+        setCurrentEvolution( prev => ( prev.evolves_to[0] ));
 
         // push new evolution object
         setEvolutionChain( prev => {
             return [ ...prev, { 
                 current,
                 next,
-                level,
+                trigger,
+                triggerValue,
                 currentId,
                 nextId,
                 currentImage,
                 nextImage
             }];
         });
-
-    }
-
-
-    // extract pokemon id from url
-    const extractId = ( url ) => {
-
-        return url.match( /\/(\d+)\// )[1];
 
     }
     
@@ -102,9 +107,9 @@ function Evolution({ pokemon })
                                 <span>{ e.current }</span>
                             </div>
 
-                            <div className="level-container">
+                            <div className="trigger-container">
                                 <div className="arrow"></div>
-                                Lvl { e.level }
+                                { e.trigger } { e.triggerValue }
                             </div>
 
                             <div className="evolve-container evolve-to">
@@ -122,6 +127,14 @@ function Evolution({ pokemon })
 
         </div>
     )
+}
+
+
+// extract pokemon id from url
+const extractId = ( url ) => {
+
+    return url.match( /\/(\d+)\// )[1];
+
 }
 
 export default Evolution;

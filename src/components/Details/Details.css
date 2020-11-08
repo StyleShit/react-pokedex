@@ -154,7 +154,7 @@
     z-index: 2;
 }
 
-.details .tab-evolution .evolution-container .level-container
+.details .tab-evolution .evolution-container .trigger-container
 {
     position: relative;
     display: flex;
@@ -162,21 +162,23 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
 }
 
-.details .tab-evolution .evolution-container .level-container .arrow
+.details .tab-evolution .evolution-container .trigger-container .arrow
 {
     --color: #EEE;
     --width: 3px;
     display: block;
     height: var( --width );
-    width: 100%;
+    width: 2.5em;
     background-color: var( --color );
     position: relative;
     margin-bottom: 10px;
 }
 
-.details .tab-evolution .evolution-container .level-container .arrow::after
+.details .tab-evolution .evolution-container .trigger-container .arrow::after
 {
     content: '';
     display: block;

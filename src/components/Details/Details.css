@@ -86,7 +86,15 @@
 
 .details .tab table td:nth-child( 2 )
 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-weight: bold;
+}
+
+.details .tab table td:nth-child( 2 ) .range-view
+{
+    width: 90%;
 }
 
 .details .tab-evolution .evolution-container

@@ -1,0 +1,34 @@
+.range-view
+{
+    width: 100%;
+    background-color: rgba( 0,0,0,.1 );
+    border-radius: 100rem;
+    overflow: hidden;
+    height: 5px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.range-view::after
+{
+    content: '';
+    display: block;
+    height: 100%;
+    width: var( --percent );
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
+    background-color: #000;
+    animation: fill .3s backwards;
+}
+
+.range-view.range-view-positive::after
+{
+    background-color: #5BC686;
+}
+
+.range-view.range-view-negative::after
+{
+    background-color: #FB7171;
+}

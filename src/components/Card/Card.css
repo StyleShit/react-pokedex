@@ -17,7 +17,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .card .card-title
@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    max-width: 50%;
 }
 
 .card img
@@ -70,4 +71,27 @@
     right: 40px;
     font-size: 2.5rem;
     color: rgba( 255,255,255,.2 );
+}
+
+@media screen and ( max-width: 500px )
+{
+    :not( .details-view ) .card
+    {
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 40vh;
+        padding: 2rem;
+    }
+
+    .card .card-title h2
+    {
+        font-size: 1.2rem;
+    }
+
+    .pokemon-id
+    {
+        font-size: 2rem;
+        top: 20px;
+        right: 20px;
+    }
 }

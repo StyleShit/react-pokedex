@@ -39,6 +39,7 @@
     border-bottom-right-radius: 0;
     padding-bottom: 25vmin;
     padding-top: 5vmin;
+    justify-content: center;
 }
 
 .details-view-container .card .card-title span.type
@@ -55,8 +56,8 @@
 
 @media screen and ( max-width: 800px )
 {
-    .details-view-container .card
+    .details-view-container .card .card-title
     {
-        justify-content: flex-start;
+        align-self: center;
     }
 }

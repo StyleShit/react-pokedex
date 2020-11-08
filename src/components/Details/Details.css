@@ -191,3 +191,11 @@
     margin-top: calc( var( --width ) * -1.4 );
     transform: rotate( 45deg );
 }
+
+@media screen and ( max-width: 500px )
+{
+    .details .tabs-switch-container .tab-switch
+    {
+        padding: .5rem;
+    }
+}

@@ -15,6 +15,11 @@
     animation: .3s pull-up-center both ease-out;
 }
 
+.details-view-container.hidden
+{
+    animation: .3s pull-down-center both ease-out;
+}
+
 .details-view-container .card-container
 {
     margin: 0;

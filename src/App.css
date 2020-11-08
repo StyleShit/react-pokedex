@@ -124,6 +124,12 @@ body
     to { transform: translateY( 0 ) translateX( -50% ); opacity: 1; }
 }
 
+@keyframes pull-down-center
+{
+    from { transform: translateY( 0 ) translateX( -50% ); opacity: 1; }
+    to { transform: translateY( 50% ) translateX( -50% ); opacity: 0; }
+}
+
 @keyframes pull-up
 {
     from { transform: translateY( 10% ); opacity: 0; }
@@ -134,4 +140,10 @@ body
 {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes fade-out
+{
+    from { opacity: 1; }
+    to { opacity: 0; }
 }

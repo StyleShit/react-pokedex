@@ -10,7 +10,7 @@ function About({ pokemon })
 
     // join ability names
     const abilities = pokemon.abilities.map( ( t ) => {
-        return t.ability.name;
+        return t.ability.name.replace( '-', ' ' );
     }).join( ', ' );
 
 

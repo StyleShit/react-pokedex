@@ -204,5 +204,11 @@
     .details .tabs-switch-container .tab-switch
     {
         padding: .5rem;
+        font-size: .8rem;
+    }
+
+    .details .tab
+    {
+        font-size: .8rem;
     }
 }

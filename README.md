@@ -8,4 +8,4 @@ A Pokedex created using [PokeAPI](https://pokeapi.co/docs/v2), based on [this Dr
 | <!--                                --> | <!--                                --> | <!--                                --> |
 |-----------------------------------------|-----------------------------------------|-----------------------------------------|
 | !["Preview Image"](./img/preview-1.png) | !["Preview Image"](./img/preview-2.png) | !["Preview Image"](./img/preview-3.png) |
-| !["Preview Image"](./img/preview-4.png) | !["Preview Image"](./img/preview-5.png) |                                         |
+| !["Preview Image"](./img/preview-4.png) | !["Preview Image"](./img/preview-5.png) | !["Preview Image"](./img/preview-6.png) |

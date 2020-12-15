@@ -59,7 +59,7 @@ function App()
 		<div className="pokedex-app">
 
 			<h1>
-				Pok&#xE9;dex
+				P<i></i>kédex
 			</h1>
 
 			{ selectedPokemon !== -1 &&

@@ -40,6 +40,15 @@ body
     margin-left: -1em;
 }
 
+.pokedex-app > h1 > i
+{
+    display: inline-block;
+    height: .6em;
+    width: .6em;
+    background-image: url( './img/pokeball.svg' );
+    background-repeat: no-repeat;
+}
+
 /*
     Pokemon type colors
 */

@@ -43,35 +43,35 @@ body
 /*
     Pokemon type colors
 */
-.type-normal { background-color: #C2C2A1; }
+.type-normal { --color: #C2C2A1; }
 
-.type-flying { background-color: #BAB0D5; }
+.type-flying { --color: #BAB0D5; }
 
-.type-ground { background-color: #B1736C; }
+.type-ground { --color: #B1736C; }
 
-.type-poison { background-color: #7C538C; }
+.type-poison { --color: #7C538C; }
 
-.type-grass { background-color: #48D0B0; }
+.type-grass { --color: #48D0B0; }
 
-.type-fire { background-color: #FB6C6C; }
+.type-fire { --color: #FB6C6C; }
 
-.type-electric { background-color: #FFD86F; }
+.type-electric { --color: #FFD86F; }
 
-.type-fairy { background-color: #f469a9; }
+.type-fairy { --color: #f469a9; }
 
-.type-bug { background-color: #C3CE75; }
+.type-bug { --color: #C3CE75; }
 
-.type-fighting { background-color: #d6b591; }
+.type-fighting { --color: #d6b591; }
 
-.type-water { background-color: #609FB5; }
+.type-water { --color: #609FB5; }
 
-.type-psychic { background-color: #9B7FA6; }
+.type-psychic { --color: #9B7FA6; }
 
-.type-ice { background-color: #7FCCEC; }
+.type-ice { --color: #7FCCEC; }
 
-.type-rock { background-color: #a6aab6; }
+.type-rock { --color: #a6aab6; }
 
-.type-dragon { background-color: #F9BE00; }
+.type-dragon { --color: #F9BE00; }
 
 /*
     Background Pokeball decoration

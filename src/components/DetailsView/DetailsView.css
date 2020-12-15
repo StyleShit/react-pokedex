@@ -40,6 +40,7 @@
     padding-bottom: 25vmin;
     padding-top: 5vmin;
     justify-content: center;
+    box-shadow: 0 0 10px 0 rgba( 0,0,0,.3 );
 }
 
 .details-view-container .card .card-title span.type

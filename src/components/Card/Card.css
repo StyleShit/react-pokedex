@@ -7,9 +7,9 @@
 
 .card
 {
-    background-color: rgba( 0,0,0,.1 );
+    background-color: var( --color );
     color: #FFF;
-    box-shadow: 0 0 10px 0 rgba( 0,0,0,.3 );
+    box-shadow: 0 0 20px 0 var( --color );
     border-radius: 3rem;
     overflow: hidden;
     height: 100%;
@@ -103,6 +103,6 @@
     .card:hover
     {
         transform: translateY( -5px );
-        box-shadow: 0 0 20px 0 rgba( 0,0,0,.4 );
+        box-shadow: 0 0 20px 5px var( --color );
     }
 }

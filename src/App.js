@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchPokemonData, fetchPokemons } from './api';
 import { Loader } from './components/Loader';
 import { PokedexView } from './components/PokedexView';
+import { DetailsView } from './components/DetailsView';
 import { withRouter } from './HOCs';
 import './App.css';
 

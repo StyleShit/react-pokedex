@@ -22,7 +22,7 @@ function Card({ pokemon: { name, id, sprites, types }, onClick })
 
                 <div className="card-title">
                     <h2>
-                        { name.replace( '-', ' ' ) }
+                        { name.replace( /-/g, ' ' ) }
                     </h2>
 
                     <div className="pokemon-types">

@@ -8,9 +8,6 @@ function Evolution({ pokemon })
     const [ evolutionChain, setEvolutionChain ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
     
-    // base URL for images
-    const imgBaseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/';
-    
     // map trigger names to display text
     const triggersDisplayName = {
         'level-up': 'Lvl',
@@ -63,8 +60,8 @@ function Evolution({ pokemon })
         const nextId        = extractId( nextEvolution.species.url );
 
         // get images URL
-        const currentImage  = imgBaseURL + currentId + '.svg';
-        const nextImage     = imgBaseURL + nextId + '.svg';
+        const currentImage  = getImageURL( currentId );
+        const nextImage     = getImageURL( nextId );
 
 
         // set current evolution to next evolution
@@ -84,6 +81,27 @@ function Evolution({ pokemon })
             }];
         });
 
+    }
+
+
+    // get pokemon image by id
+    const getImageURL = ( id ) => {
+
+        // base URL for images
+        const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
+
+        // has svg
+        if( parseInt( id ) <= 649 )
+        {
+            return `${ baseURL }/dream-world/${ id }.svg`;
+        }
+
+        // has only png
+        else
+        {
+            return `${ baseURL }/official-artwork/${ id }.png`;
+        }
+        
     }
     
 

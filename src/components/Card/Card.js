@@ -4,7 +4,7 @@ import './Card.css';
 function Card({ pokemon: { name, id, sprites, types }, onClick })
 {
     // get pokemon image
-    const imgURL = sprites.other.dream_world.front_default;
+    const imgURL = sprites.other.dream_world.front_default || sprites.other['official-artwork'].front_default;
 
     // add css classes according to pokemon type
     const cssClass = types.map( t => 'type-' + t.type.name ).join( ' ' );

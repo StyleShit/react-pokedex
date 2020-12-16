@@ -17,6 +17,7 @@ function PokedexView({ generation })
 
 		fillPokemonsArray();
 
+	// eslint-disable-next-line
 	}, [ generation ] );
 
 

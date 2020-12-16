@@ -56,6 +56,12 @@ body
 
 .type-flying { --color: #BAB0D5; }
 
+.type-ghost { --color: #9E8DB9; }
+
+.type-dark { --color: #333; }
+
+.type-steel { --color: #CCCCDE; }
+
 .type-ground { --color: #B1736C; }
 
 .type-poison { --color: #7C538C; }

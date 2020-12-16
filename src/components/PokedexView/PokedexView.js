@@ -27,7 +27,7 @@ function PokedexView({ generation })
 		setIsLoading( true );
 		setPokemons( [] );
 
-		if( !generation.limit || !generation.offset )
+		if( generation.limit == null || generation.offset == null )
 		{
 			return;
 		}

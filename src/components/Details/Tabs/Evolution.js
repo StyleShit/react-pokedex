@@ -8,11 +8,14 @@ function Evolution({ pokemon, changePokemon })
     const [ evolutionChain, setEvolutionChain ] = useState( [] );
     const [ loading, setLoading ] = useState( true );
     
+
     // map trigger names to display text
     const triggersDisplayName = {
+
         'level-up': 'Lvl',
         'trade': 'Trade',
         'use-item': 'Use'
+
     };
 
 
@@ -22,6 +25,7 @@ function Evolution({ pokemon, changePokemon })
         setLoading( true );
 
         fetchPokemonEvolutionChain( pokemon.id ).then( ( data ) => {
+
             setEvolutionChain( [] );
             setCurrentEvolution( data.chain );
             setLoading( false );
@@ -48,7 +52,7 @@ function Evolution({ pokemon, changePokemon })
 
 
         const nextEvolution = currentEvolution.evolves_to[0];
-        const details = nextEvolution.evolution_details[0];
+        const details       = nextEvolution.evolution_details[0];
         
 
         // extract useful data
@@ -69,6 +73,7 @@ function Evolution({ pokemon, changePokemon })
 
         // push new evolution object
         setEvolutionChain( prev => {
+
             return [ ...prev, { 
                 current,
                 next,
@@ -79,6 +84,7 @@ function Evolution({ pokemon, changePokemon })
                 currentImage,
                 nextImage
             }];
+            
         });
 
     }

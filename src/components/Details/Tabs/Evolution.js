@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Loader } from '../../Loader';
-import { fetchPokemonEvolutionChain } from '../../../api';
+import { fetchPokemonEvolutionChain, fetchPokemonData } from '../../../api';
 
-function Evolution({ pokemon })
+function Evolution({ pokemon, changePokemon })
 {
     const [ currentEvolution, setCurrentEvolution ] = useState( [] );
     const [ evolutionChain, setEvolutionChain ] = useState( [] );
@@ -104,6 +104,22 @@ function Evolution({ pokemon })
         
     }
     
+    
+    // fetch pokemon from evolution chain and show its details
+    const fetchPokemon = ( name ) => {
+
+        if( !name || pokemon.name === name )
+        {
+            return;
+        }
+
+
+        // get pokemon data & show it
+        setLoading( true );
+        fetchPokemonData( name ).then( data => { changePokemon( data ); });
+
+    }
+
 
     return (
         <div className="tab tab-evolution">
@@ -120,13 +136,13 @@ function Evolution({ pokemon })
                 </div>
             }
 
-            {
+            { !loading &&
                 evolutionChain.map(( e, i ) => {
                     return (
                         <div className="evolution-container" key={ i }>
 
                             <div className="evolve-container evolve-from">
-                                <div className="image-container">
+                                <div className="image-container" onClick={ () => { fetchPokemon( e.current ); } }>
                                     <div className="bg-pokeball"></div>
                                     <img alt={ e.current } src={ e.currentImage } />
                                 </div>
@@ -139,7 +155,7 @@ function Evolution({ pokemon })
                                 { e.trigger } { e.triggerValue }
                             </div>
 
-                            <div className="evolve-container evolve-to">
+                            <div className="evolve-container evolve-to" onClick={ () => { fetchPokemon( e.next ); } }>
                                 <div className="image-container">
                                     <div className="bg-pokeball"></div>
                                     <img alt={ e.next } src={ e.nextImage } />

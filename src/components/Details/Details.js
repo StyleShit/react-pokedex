@@ -4,7 +4,7 @@ import BaseStats from './Tabs/BaseStats';
 import Evolution from './Tabs/Evolution';
 import './Details.css';
 
-function Details({ pokemon })
+function Details({ pokemon, setPokemonData })
 {
     const [ tab, setTab ] = useState( 'about' );
 
@@ -28,6 +28,16 @@ function Details({ pokemon })
 
     }
 
+
+    // change pokemon data & go to first tab
+    const changePokemon = ( pokemon ) => { 
+    
+        setTab( 'about' );
+        setPokemonData( pokemon ); 
+    
+    }
+
+    
     return (
         <div className="details">
 
@@ -50,7 +60,7 @@ function Details({ pokemon })
             }
 
             { tab === 'evolution' &&
-                <Evolution pokemon={ pokemon } />
+                <Evolution pokemon={ pokemon } changePokemon={ changePokemon } />
             }
 
         </div>

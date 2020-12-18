@@ -14,10 +14,12 @@ class DetailsView extends Component
         this.detailsViewRef = createRef( null );
 
         this.state = {
-            hideOverlay: false
+            hideOverlay: false,
+            pokemon: props.pokemon
         };
 
         this.handleBackClick = this.handleBackClick.bind( this );
+        this.setPokemonData = this.setPokemonData.bind( this );
     }
 
     // handle back button clicking
@@ -34,6 +36,16 @@ class DetailsView extends Component
         }, 500 );
     }
 
+
+    // set pokemon data from evolution chain
+    setPokemonData( data )
+    {
+        this.setState({
+            pokemon: data
+        });
+    }
+
+    
     render()
     {
         return ReactDOM.createPortal(
@@ -42,8 +54,8 @@ class DetailsView extends Component
                 <div className="details-view-container shown" ref={ this.detailsViewRef }>
 
                     <BackButton onClick={ this.handleBackClick } />
-                    <Card pokemon={ this.props.pokemon } />
-                    <Details pokemon={ this.props.pokemon } />
+                    <Card pokemon={ this.state.pokemon } />
+                    <Details pokemon={ this.state.pokemon } setPokemonData={ this.setPokemonData } />
 
                 </div>
             </>, document.body

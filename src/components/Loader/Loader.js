@@ -1,13 +1,12 @@
 import React from 'react';
 import './Loader.css';
 
-function Loader()
-{
-    return (
-        <div className="loader">
+function Loader() {
+	return (
+		<div className="loader">
             Catching 'em all...
-        </div>
-    )
+		</div>
+	);
 }
 
 export default Loader;

@@ -4,8 +4,7 @@ import { withRouter } from './HOCs';
 import generations from './generations';
 import './App.css';
 
-function App()
-{
+function App() {
 	return (
 		<div className="pokedex-app">
 
@@ -15,8 +14,8 @@ function App()
 
 			<Switch>
 
-				<Route exact path='/'>
-					<Redirect to={ generations[0].link } />
+				<Route exact path="/">
+					<Redirect to={ generations[ 0 ].link } />
 				</Route>
 
 				{
@@ -26,7 +25,7 @@ function App()
 							<PokedexView generation={ gen } />
 						</Route>
 
-					))
+					) )
 				}
 
 			</Switch>

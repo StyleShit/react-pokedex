@@ -1,6 +1,7 @@
 const generations = [
 
 	{
+		id: 1,
 		link: 'gen-i',
 		text: 'I',
 		offset: 0,
@@ -8,6 +9,7 @@ const generations = [
 	},
 
 	{
+		id: 2,
 		link: 'gen-ii',
 		text: 'II',
 		offset: 151,
@@ -15,6 +17,7 @@ const generations = [
 	},
 
 	{
+		id: 3,
 		link: 'gen-iii',
 		text: 'III',
 		offset: 251,
@@ -22,6 +25,7 @@ const generations = [
 	},
 
 	{
+		id: 4,
 		link: 'gen-iv',
 		text: 'IV',
 		offset: 386,
@@ -29,6 +33,7 @@ const generations = [
 	},
 
 	{
+		id: 5,
 		link: 'gen-v',
 		text: 'V',
 		offset: 493,
@@ -36,6 +41,7 @@ const generations = [
 	},
 
 	{
+		id: 6,
 		link: 'gen-vi',
 		text: 'VI',
 		offset: 649,
@@ -43,6 +49,7 @@ const generations = [
 	},
 
 	{
+		id: 7,
 		link: 'gen-vii',
 		text: 'VII',
 		offset: 721,
@@ -50,6 +57,7 @@ const generations = [
 	},
 
 	{
+		id: 8,
 		link: 'gen-viii',
 		text: 'VIII',
 		offset: 809,

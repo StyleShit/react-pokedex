@@ -38,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^17.0.38",
     "eslint": "^7.11.0",
     "eslint-plugin-react": "^7.28.0"
   }

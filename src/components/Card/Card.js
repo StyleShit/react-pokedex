@@ -1,7 +1,13 @@
 import React from 'react';
 import './Card.css';
 
-function Card( { pokemon: { name, id, sprites, types }, onClick } ) {
+function Card( { pokemon, onClick } ) {
+	if ( ! pokemon ) {
+		return null;
+	}
+
+	const { name, id, sprites, types } = pokemon;
+
 	// get pokemon image
 	const imgURL = sprites.other.dream_world.front_default || sprites.other[ 'official-artwork' ].front_default;
 

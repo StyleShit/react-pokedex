@@ -3,9 +3,15 @@ import About from './Tabs/About';
 import BaseStats from './Tabs/BaseStats';
 import Evolution from './Tabs/Evolution';
 import './Details.css';
+import { usePokemons } from '../../context/PokemonsProvider';
 
-function Details( { pokemon, setPokemonData } ) {
+function Details( { pokemon } ) {
 	const [ tab, setTab ] = useState( 'about' );
+	const { setCurrentPokemonId } = usePokemons();
+
+	if ( ! pokemon ) {
+		return null;
+	}
 
 	// get pokemon image
 	const sprites = pokemon.sprites.other;
@@ -25,7 +31,7 @@ function Details( { pokemon, setPokemonData } ) {
 	// change pokemon data & go to first tab
 	const changePokemon = ( pokemonData ) => {
 		setTab( 'about' );
-		setPokemonData( pokemonData );
+		setCurrentPokemonId( pokemonData.id );
 	};
 
 	return (

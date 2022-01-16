@@ -1,48 +1,19 @@
-import { useEffect, useState, React } from 'react';
-import { fetchPokemonData, fetchPokemons } from '../../api';
+import { memo, useEffect } from 'react';
 import { Card } from '../Card';
 import { DetailsView } from '../DetailsView';
 import { Navigation } from '../Navigation';
 import { Loader } from '../Loader';
 import './PokedexView.css';
+import { usePokemons } from '../../context/PokemonsProvider';
+import { useGeneration } from '../../hooks';
 
 function PokedexView( { generation } ) {
-	const [ pokemons, setPokemons ] = useState( [] );
-	const [ selectedPokemon, setSelectedPokemon ] = useState( -1 );
-	const [ isLoading, setIsLoading ] = useState( false );
+	const { pokemons, setPokemons, setCurrentPokemonId } = usePokemons();
+	const { data, isLoading } = useGeneration( generation );
 
-	// load all pokemons on mount & generation change
 	useEffect( () => {
-		fillPokemonsArray();
-
-	// eslint-disable-next-line
-	}, [ generation ] );
-
-	// fetch all pokemons and push to array
-	const fillPokemonsArray = () => {
-		// set loading state and reset pokemons array
-		setIsLoading( true );
-		setPokemons( [] );
-
-		if ( generation.limit === null || generation.offset === null ) {
-			return;
-		}
-
-		// fetch first original 151 pokemons
-		fetchPokemons( generation.limit, generation.offset ).then( async ( { results } ) => {
-			const newPokemons = [];
-
-			// iterate over each pokemon an add to array
-			await Promise.all( results.map( async ( pokemon, i ) => {
-				await fetchPokemonData( pokemon.name ).then( async ( json ) => {
-					newPokemons[ i ] = json;
-				} );
-			} ) );
-
-			setPokemons( newPokemons );
-			setIsLoading( false );
-		} );
-	};
+		setPokemons( data );
+	}, [ data ] );
 
 	if ( isLoading ) {
 		return <Loader />;
@@ -54,17 +25,15 @@ function PokedexView( { generation } ) {
 
 			<div className="pokedex-view">
 				{
-					pokemons.map( ( p, i ) => {
+					pokemons.map( ( pokemon ) => {
 						return (
-							<Card pokemon={ p } key={ p.id } onClick={ () => setSelectedPokemon( i ) } />
+							<Card pokemon={ pokemon } key={ pokemon.id } onClick={ () => setCurrentPokemonId( pokemon.id ) } />
 						);
 					} )
 				}
 			</div>
 
-			{ selectedPokemon !== -1 &&
-				<DetailsView pokemon={ pokemons[ selectedPokemon ] } setSelectedPokemon={ setSelectedPokemon } />
-			}
+			<DetailsView />
 		</>
 	);
 }

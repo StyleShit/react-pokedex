@@ -1,59 +1,42 @@
-import React, { Component, createRef } from 'react';
+import { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { usePokemons } from '../../context/PokemonsProvider';
 import BackButton from '../BackButton/BackButton';
 import { Card } from '../Card';
 import { Details } from '../Details';
 import { Overlay } from '../Overlay';
 import './DetailsView.css';
 
-class DetailsView extends Component {
-	constructor( props ) {
-		super( props );
-		this.detailsViewRef = createRef( null );
+export default function DetailsView() {
+	const detailsViewRef = useRef( null );
+	const { setCurrentPokemonId, currentPokemon } = usePokemons();
+	const [ hasOverlay, setHasOverlay ] = useState( true );
 
-		this.state = {
-			hideOverlay: false,
-			pokemon: props.pokemon,
-		};
-
-		this.handleBackClick = this.handleBackClick.bind( this );
-		this.setPokemonData = this.setPokemonData.bind( this );
+	if ( ! currentPokemon ) {
+		return null;
 	}
 
-	// handle back button clicking
-	handleBackClick() {
-		this.setState( {
-			hideOverlay: true,
-		} );
+	// Handle popup close.
+	const closeModal = () => {
+		setHasOverlay( false );
+		detailsViewRef.current.classList.add( 'hidden' );
 
-		this.detailsViewRef.current.classList.add( 'hidden' );
-
+		// Wait for transition to finish.
 		setTimeout( () => {
-			this.props.setSelectedPokemon( -1 );
+			setHasOverlay( true );
+			setCurrentPokemonId( -1 );
 		}, 500 );
-	}
+	};
 
-	// set pokemon data from evolution chain
-	setPokemonData( data ) {
-		this.setState( {
-			pokemon: data,
-		} );
-	}
+	return ReactDOM.createPortal(
+		<>
+			<Overlay hidden={ ! hasOverlay } onClick={ closeModal } />
 
-	render() {
-		return ReactDOM.createPortal(
-			<>
-				<Overlay hidden={ this.state.hideOverlay } onClick={ this.handleBackClick } />
-				<div className="details-view-container shown" ref={ this.detailsViewRef }>
-
-					<BackButton onClick={ this.handleBackClick } />
-					<Card pokemon={ this.state.pokemon } />
-					<Details pokemon={ this.state.pokemon } setPokemonData={ this.setPokemonData } />
-
-				</div>
-			</>, document.body,
-		);
-	}
+			<div className={ `details-view-container shown` } ref={ detailsViewRef }>
+				<BackButton onClick={ closeModal } />
+				<Card pokemon={ currentPokemon }/>
+				<Details pokemon={ currentPokemon } />
+			</div>
+		</>, document.body,
+	);
 }
-
-export default DetailsView;

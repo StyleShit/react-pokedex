@@ -16,7 +16,7 @@ export default function DetailsView() {
 		return null;
 	}
 
-	// Handle popup close.
+	// Handle modal close.
 	const closeModal = () => {
 		setHasOverlay( false );
 		detailsViewRef.current.classList.add( 'hidden' );

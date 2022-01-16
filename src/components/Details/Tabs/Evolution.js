@@ -9,11 +9,9 @@ function Evolution( { pokemon, changePokemon } ) {
 
 	// map trigger names to display text
 	const triggersDisplayName = {
-
 		'level-up': 'Lvl',
 		trade: 'Trade',
 		'use-item': 'Use',
-
 	};
 
 	// load evolution on mount
@@ -25,15 +23,11 @@ function Evolution( { pokemon, changePokemon } ) {
 			setCurrentEvolution( data.chain );
 			setLoading( false );
 		} );
-
-		// eslint-disable-next-line
-    }, [ pokemon ]);
+	}, [ pokemon ] );
 
 	useEffect( () => {
 		getNextEvolution();
-
-		// eslint-disable-next-line
-    }, [ currentEvolution ])
+	}, [ currentEvolution ] );
 
 	// get next pokemon evolution
 	const getNextEvolution = () => {

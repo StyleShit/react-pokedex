@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Card } from '../Card';
 import { DetailsView } from '../DetailsView';
 import { Navigation } from '../Navigation';

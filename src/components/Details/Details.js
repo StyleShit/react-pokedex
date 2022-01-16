@@ -36,8 +36,8 @@ function Details( { pokemon, setPokemonData } ) {
 			<div className="tabs-switch-container">
 
 				<button className={ getClassName( 'about' ) } data-tab="about" onClick={ switchTab }>About</button>
-				<button className={ getClassName( 'base-stats' )} data-tab="base-stats" onClick={ switchTab }>Base Stats</button>
-				<button className={ getClassName( 'evolution' )} data-tab="evolution" onClick={ switchTab }>Evolution</button>
+				<button className={ getClassName( 'base-stats' ) } data-tab="base-stats" onClick={ switchTab }>Base Stats</button>
+				<button className={ getClassName( 'evolution' ) } data-tab="evolution" onClick={ switchTab }>Evolution</button>
 
 			</div>
 

@@ -87,6 +87,7 @@ module.exports = {
 			allowTemplateLiterals: true,
 			avoidEscape: true,
 		} ],
+		'react/jsx-curly-spacing': [ 'error', { when: 'always', children: false } ],
 		'react/no-unescaped-entities': 'off',
 		'react/prop-types': 'off',
 		'react/react-in-jsx-scope': 'off',

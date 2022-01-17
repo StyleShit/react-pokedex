@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePokemonImage } from '../../hooks';
 import './Card.css';
 
 function Card( { pokemon, onClick } ) {
@@ -6,21 +7,15 @@ function Card( { pokemon, onClick } ) {
 		return null;
 	}
 
-	const { name, id, sprites, types } = pokemon;
+	const { name, id, types } = pokemon;
 
-	// get pokemon image
-	const imgURL = sprites.other.dream_world.front_default || sprites.other[ 'official-artwork' ].front_default;
+	const imgURL = usePokemonImage( pokemon.id ),
+		className = useClassName( pokemon ),
+		paddedId = '#' + id.toString().padStart( 3, '000' );
 
-	// add css classes according to pokemon type
-	const cssClass = types.map( ( t ) => 'type-' + t.type.name ).join( ' ' );
-
-	// pad pokemon id with zeros
-	const paddedId = '#' + id.toString().padStart( 3, '000' );
-
-	// render
 	return (
 		<div className="card-container" onClick={ onClick }>
-			<div className={ `card ${ cssClass }` }>
+			<div className={ `card ${ className }` }>
 
 				<div className="bg-pokeball"></div>
 				<span className="pokemon-id">{ paddedId }</span>
@@ -32,9 +27,9 @@ function Card( { pokemon, onClick } ) {
 
 					<div className="pokemon-types">
 						{
-							types.map( ( t, i ) => {
-								return <span className="type" key={ i }>{ t.type.name }</span>;
-							} )
+							types.map( ( { type } ) => (
+								<span className="type" key={ type.name }>{ type.name }</span>
+							) )
 						}
 					</div>
 				</div>
@@ -46,6 +41,10 @@ function Card( { pokemon, onClick } ) {
 			</div>
 		</div>
 	);
+}
+
+function useClassName( { types } ) {
+	return types.map( ( { type } ) => 'type-' + type.name ).join( ' ' );
 }
 
 export default Card;

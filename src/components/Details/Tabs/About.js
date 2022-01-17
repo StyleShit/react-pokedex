@@ -1,27 +1,18 @@
-import React from 'react';
-
 function About( { pokemon } ) {
-	// join type names
-	const types = pokemon.types.map( ( t ) => {
-		return t.type.name;
+	// Join type names
+	const types = pokemon.types.map( ( { type } ) => type.name ).join( ', ' );
+
+	// Join ability names
+	const abilities = pokemon.abilities.map( ( { ability } ) => {
+		return ability.name.replace( '-', ' ' );
 	} ).join( ', ' );
 
-	// join ability names
-	const abilities = pokemon.abilities.map( ( t ) => {
-		return t.ability.name.replace( '-', ' ' );
-	} ).join( ', ' );
-
-	// calculate height in cm
-	const height = pokemon.height * 10;
-
-	// calculate weight in kg
-	const weight = pokemon.weight / 10;
+	const height = pokemon.height * 10; // cm
+	const weight = pokemon.weight / 10; // kg
 
 	return (
 		<div className="tab tab-about">
-
 			<table>
-
 				<tbody>
 					<tr>
 						<td>Species</td>
@@ -43,9 +34,7 @@ function About( { pokemon } ) {
 						<td>{ abilities }</td>
 					</tr>
 				</tbody>
-
 			</table>
-
 		</div>
 	);
 }

@@ -10,7 +10,6 @@ const labels = [
 ];
 
 function BaseStats( { stats } ) {
-	// Calculate total stats value.
 	const total = stats.reduce( ( sum, current ) => sum + parseInt( current.base_stat ), 0 );
 
 	return (

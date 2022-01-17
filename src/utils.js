@@ -1,4 +1,4 @@
-// Recursively iterate over the evolution chain and move into an array.
+// Recursively iterate over an evolution chain and normalize into an array.
 export const normalizeEvolutionChain = ( evolution ) => {
 	if ( evolution.length === 0 || evolution.evolves_to.length === 0 ) {
 		return [];

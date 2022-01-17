@@ -6,7 +6,6 @@ import { fetchPokemonEvolutionChain } from '../api';
 const useEvolutionChain = ( pokemonId ) => {
 	const [ currentEvolution, setCurrentEvolution ] = useState( [] );
 	const [ isLoading, setIsLoading ] = useState( false );
-
 	const { evolutionChain } = useNormalizeEvolutionChain( currentEvolution );
 
 	useEffect( () => {

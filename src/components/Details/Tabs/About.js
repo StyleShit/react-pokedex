@@ -1,8 +1,6 @@
 function About( { pokemon } ) {
-	// Join type names
 	const types = pokemon.types.map( ( { type } ) => type.name ).join( ', ' );
 
-	// Join ability names
 	const abilities = pokemon.abilities.map( ( { ability } ) => {
 		return ability.name.replace( '-', ' ' );
 	} ).join( ', ' );

@@ -2,7 +2,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { PokedexView } from './components/PokedexView';
 import PokemonsProvider from './context/PokemonsProvider';
 import { withRouter } from './HOCs';
-import generations from './generations';
+import generations from './data/generations';
 import './App.css';
 
 function App() {

@@ -3,9 +3,9 @@ import { Card } from '../Card';
 import { DetailsView } from '../DetailsView';
 import { Navigation } from '../Navigation';
 import { Loader } from '../Loader';
-import './PokedexView.css';
 import { usePokemons } from '../../context/PokemonsProvider';
 import { useGeneration } from '../../hooks';
+import './PokedexView.css';
 
 function PokedexView( { generation } ) {
 	const { pokemons, setPokemons, setCurrentPokemonId } = usePokemons();

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { fetchPokemonData, fetchPokemons } from '../api';
-import generations from '../generations';
+import generations from '../data/generations';
 
 /**
  * Hook to get Pokemons generation data by ID.

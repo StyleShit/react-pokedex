@@ -1,10 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function CustomNavLink( props ) {
+function CustomNavLink( { children, ...props } ) {
 	return (
 		<NavLink className="navigation-link" activeClassName="active" { ...props }>
-			{ props.children }
+			{ children }
 		</NavLink>
 	);
 }

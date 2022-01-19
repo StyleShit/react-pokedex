@@ -1,12 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function CustomNavLink( { children, ...props } ) {
-	return (
-		<NavLink className="navigation-link" activeClassName="active" { ...props }>
-			{ children }
-		</NavLink>
-	);
+function CustomNavLink( props ) {
+	return <NavLink className="navigation-link" activeClassName="active" { ...props } />;
 }
 
 export default CustomNavLink;

@@ -9,12 +9,14 @@ const useEvolutionChain = ( pokemonId ) => {
 	const { evolutionChain } = useNormalizeEvolutionChain( currentEvolution );
 
 	useEffect( () => {
-		setIsLoading( true );
+		if ( pokemonId ) {
+			setIsLoading( true );
 
-		fetchPokemonEvolutionChain( pokemonId ).then( ( evolution ) => {
-			setCurrentEvolution( evolution );
-			setIsLoading( false );
-		} );
+			fetchPokemonEvolutionChain( pokemonId ).then( ( evolution ) => {
+				setCurrentEvolution( evolution );
+				setIsLoading( false );
+			} );
+		}
 	}, [ pokemonId ] );
 
 	return {

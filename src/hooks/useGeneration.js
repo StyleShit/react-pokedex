@@ -15,7 +15,7 @@ export default function useGeneration( generationId ) {
 
 	const generation = useMemo( () => {
 		return generations.find( ( gen ) => gen.id === generationId );
-	}, [ generations, generationId ] );
+	}, [ generationId ] );
 
 	// Fetch pokemons data by generation.
 	const fetchData = useCallback( () => {
@@ -32,9 +32,9 @@ export default function useGeneration( generationId ) {
 
 			// Get data for each specific Pokemon.
 			await Promise.all( results.map( async ( { name } ) => {
-				await fetchPokemonData( name ).then( async ( pokemon ) => {
-					data[ pokemon.id ] = pokemon;
-				} );
+				const pokemon = await fetchPokemonData( name );
+
+				data[ pokemon.id ] = pokemon;
 			} ) );
 
 			setPokemons( data );
@@ -44,7 +44,9 @@ export default function useGeneration( generationId ) {
 
 	// Refetch on generation change.
 	useEffect( () => {
-		fetchData();
+		if ( generationId ) {
+			fetchData();
+		}
 	}, [ generationId ] );
 
 	return {

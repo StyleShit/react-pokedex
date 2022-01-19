@@ -1,7 +1,10 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { PokedexView } from './components/PokedexView';
-import PokemonsProvider from './context/PokemonsProvider';
+import { DetailsView } from './components/DetailsView';
+import { Navigation } from './components/Navigation';
+import { Heading } from './components/Heading';
 import { withRouter } from './HOCs';
+import PokemonsProvider from './context/PokemonsProvider';
 import generations from './data/generations';
 import './App.css';
 
@@ -9,10 +12,9 @@ function App() {
 	return (
 		<PokemonsProvider>
 			<div className="pokedex-app">
+				<Heading />
 
-				<h1>
-				P<i></i>kédex
-				</h1>
+				<Navigation />
 
 				<Switch>
 
@@ -21,17 +23,15 @@ function App() {
 					</Route>
 
 					{
-						generations.map( ( gen, i ) => (
-
-							<Route key={ i } exact path={ '/' + gen.link }>
-								<PokedexView generation={ gen.id } />
+						generations.map( ( { id, link } ) => (
+							<Route key={ id } exact path={ '/' + link }>
+								<PokedexView generation={ id } />
 							</Route>
-
 						) )
 					}
-
 				</Switch>
 
+				<DetailsView />
 			</div>
 		</PokemonsProvider>
 	);

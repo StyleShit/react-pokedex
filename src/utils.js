@@ -1,6 +1,12 @@
-// Recursively iterate over an evolution chain and normalize into an array.
+/**
+ * Recursively iterate over an evolution chain and normalize into an array.
+ *
+ * @param {Object} evolution - Evolution object from API.
+ *
+ * @returns {array}
+ */
 export const normalizeEvolutionChain = ( evolution ) => {
-	if ( evolution.length === 0 || evolution.evolves_to.length === 0 ) {
+	if ( ! evolution.evolves_to.length ) {
 		return [];
 	}
 
@@ -9,6 +15,9 @@ export const normalizeEvolutionChain = ( evolution ) => {
 		trade: 'Trade',
 		'use-item': 'Use',
 	};
+
+	// Extract pokemon ID from 'species' URL (https://pokeapi.co/api/v2/pokemon-species/{id}/).
+	const extractId = ( url ) => url.match( /\/(\d+)\// )[ 1 ];
 
 	const nextEvolution = evolution.evolves_to[ 0 ],
 		details = nextEvolution.evolution_details[ 0 ],
@@ -32,12 +41,13 @@ export const normalizeEvolutionChain = ( evolution ) => {
 	];
 };
 
-// Extract pokemon id from URL.
-export const extractId = ( url ) => {
-	return url.match( /\/(\d+)\// )[ 1 ];
-};
-
-// Get pokemon image by id.
+/**
+ * Get pokemon image by id.
+ *
+ * @param {string} pokemonId
+ *
+ * @returns {string}
+ */
 export const getImageURL = ( pokemonId ) => {
 	const baseURL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other';
 

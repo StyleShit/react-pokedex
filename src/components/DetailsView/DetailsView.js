@@ -1,38 +1,38 @@
-import { useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useCallback, useState } from 'react';
 import { usePokemons } from '../../context/PokemonsProvider';
-import BackButton from '../BackButton/BackButton';
+import { BackButton } from '../BackButton';
 import { Card } from '../Card';
 import { Details } from '../Details';
 import { Overlay } from '../Overlay';
 import './DetailsView.css';
 
 export default function DetailsView() {
-	const detailsViewRef = useRef( null );
-	const { setCurrentPokemonId, currentPokemon } = usePokemons();
-	const [ hasOverlay, setHasOverlay ] = useState( true );
+	const { currentPokemon, setCurrentPokemonId } = usePokemons();
+	const [ isHidden, seIsHidden ] = useState( false );
+
+	const closeModal = useCallback( () => {
+		seIsHidden( true );
+	}, [] );
+
+	const handleAnimationEnd = useCallback( ( { animationName } ) => {
+		if ( animationName !== 'pull-down-center' ) {
+			return;
+		}
+
+		seIsHidden( false );
+		setCurrentPokemonId( -1 );
+	} );
 
 	if ( ! currentPokemon ) {
 		return null;
 	}
 
-	// Handle modal close.
-	const closeModal = () => {
-		setHasOverlay( false );
-		detailsViewRef.current.classList.add( 'hidden' );
-
-		// Wait for transition to finish.
-		setTimeout( () => {
-			setHasOverlay( true );
-			setCurrentPokemonId( -1 );
-		}, 500 );
-	};
-
 	return ReactDOM.createPortal(
 		<>
-			<Overlay hidden={ ! hasOverlay } onClick={ closeModal } />
+			<Overlay hidden={ isHidden } onClick={ closeModal } />
 
-			<div className={ `details-view-container shown` } ref={ detailsViewRef }>
+			<div className={ `details-view-container ${ isHidden && 'hidden' }` } onAnimationEnd={ handleAnimationEnd }>
 				<BackButton onClick={ closeModal } />
 				<Card pokemon={ currentPokemon }/>
 				<Details pokemon={ currentPokemon } />

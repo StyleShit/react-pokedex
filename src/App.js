@@ -17,11 +17,9 @@ function App() {
 				<Navigation />
 
 				<Switch>
-
 					<Route exact path="/">
 						<Redirect to={ generations[ 0 ].link } />
 					</Route>
-
 					{
 						generations.map( ( { id, link } ) => (
 							<Route key={ id } exact path={ '/' + link }>

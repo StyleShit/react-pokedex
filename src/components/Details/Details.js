@@ -61,14 +61,14 @@ function Details( { pokemon } ) {
 			{
 				( () => {
 					switch ( currentTab ) {
-					case TAB_ABOUT:
-						return <About pokemon={ pokemon } />;
+						case TAB_ABOUT:
+							return <About pokemon={ pokemon } />;
 
-					case TAB_STATS:
-						return <BaseStats stats={ pokemon.stats } />;
+						case TAB_STATS:
+							return <BaseStats stats={ pokemon.stats } />;
 
-					case TAB_EVOLUTION:
-						return <Evolution pokemon={ pokemon } onPokemonChange={ onPokemonChange } />;
+						case TAB_EVOLUTION:
+							return <Evolution pokemon={ pokemon } onPokemonChange={ onPokemonChange } />;
 					}
 				} )()
 			}

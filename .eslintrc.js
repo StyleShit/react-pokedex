@@ -29,7 +29,7 @@ module.exports = {
 		'eol-last': 'error',
 		eqeqeq: 'error',
 		'func-call-spacing': 'error',
-		indent: [ 'error', 'tab' ],
+		indent: [ 'error', 'tab', { SwitchCase: 1 } ],
 		'jsx-quotes': 'error',
 		'key-spacing': 'error',
 		'keyword-spacing': 'error',

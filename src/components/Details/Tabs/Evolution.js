@@ -23,7 +23,7 @@ function Evolution( { pokemon, onPokemonChange } ) {
 			{ ! isLoading &&
 				evolutionChain.map( ( evolution ) => (
 					<EvolutionItem
-						key={ evolution.currentId }
+						key={ `${ evolution.currentId }-${ evolution.nextId }` }
 						onPokemonChange={ onPokemonChange }
 						{ ...evolution }
 					/>

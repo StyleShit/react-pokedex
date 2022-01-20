@@ -65,6 +65,7 @@
 
 .details .tab
 {
+    max-height: 45vh;
     overflow-y: auto;
 }
 
@@ -97,9 +98,19 @@
     width: 90%;
 }
 
+.details .tab-evolution
+{
+    --gap: 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var( --gap );
+}
+
 .details .tab-evolution .loader
 {
     padding: 1em;
+    margin-top: calc( -1 * var( --gap ) );
 }
 
 @media screen and ( max-width: 500px )

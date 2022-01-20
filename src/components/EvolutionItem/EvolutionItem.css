@@ -3,13 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 40px;
     position: relative;
 }
 
-.evolution-container:last-child
+.evolution-container > *
 {
-    margin-bottom: 0;
+    width: 33.3333%;
 }
 
 .evolve-container

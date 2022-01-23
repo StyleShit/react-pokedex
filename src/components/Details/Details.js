@@ -2,7 +2,7 @@ import { memo, useState } from 'react';
 import About from './Tabs/About';
 import BaseStats from './Tabs/BaseStats';
 import Evolution from './Tabs/Evolution';
-import { usePokemonImage } from '../../hooks';
+import { getImageURL } from '../../utils';
 import './Details.css';
 
 const TAB_ABOUT = 'about';
@@ -27,7 +27,7 @@ const tabs = [
 
 function Details( { pokemon } ) {
 	const [ currentTab, setCurrentTab ] = useState( TAB_DEFAULT );
-	const imgURL = usePokemonImage( pokemon?.id );
+	const imgURL = getImageURL( pokemon?.id );
 
 	if ( ! pokemon ) {
 		return null;
@@ -69,6 +69,9 @@ function Details( { pokemon } ) {
 
 						case TAB_EVOLUTION:
 							return <Evolution pokemon={ pokemon } onPokemonChange={ onPokemonChange } />;
+
+						default:
+							return null;
 					}
 				} )()
 			}

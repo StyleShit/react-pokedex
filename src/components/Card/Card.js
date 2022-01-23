@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { usePokemonImage } from '../../hooks';
+import { getImageURL } from '../../utils';
 import './Card.css';
 
 function Card( { pokemon, onClick } ) {
@@ -9,7 +9,7 @@ function Card( { pokemon, onClick } ) {
 
 	const { name, id, types } = pokemon;
 
-	const imgURL = usePokemonImage( id ),
+	const imgURL = getImageURL( id ),
 		className = types.map( ( { type } ) => 'type-' + type.name ).join( ' ' ),
 		paddedId = '#' + id.toString().padStart( 3, '000' );
 

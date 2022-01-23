@@ -1,65 +1,32 @@
-import React from 'react';
 import { RangeView } from '../../RangeView';
 
+const labels = [
+	'HP',
+	'Attack',
+	'Defense',
+	'Sp. Atk',
+	'Sp. Def',
+	'Speed',
+];
+
 function BaseStats( { stats } ) {
-	// calculate total stats value
-	const total = stats.reduce( ( sum, current ) => {
-		return sum + parseInt( current.base_stat );
-	}, 0 );
+	const total = stats.reduce( ( sum, current ) => sum + parseInt( current.base_stat ), 0 );
 
 	return (
 		<div className="tab tab-base-stats">
-
 			<table>
-
 				<tbody>
-					<tr>
-						<td>HP</td>
-						<td>
-							{ stats[ 0 ].base_stat }
-							<RangeView value={ stats[ 0 ].base_stat } />
-						</td>
-					</tr>
-
-					<tr>
-						<td>Attack</td>
-						<td>
-							{ stats[ 1 ].base_stat }
-							<RangeView value={ stats[ 1 ].base_stat } />
-						</td>
-					</tr>
-
-					<tr>
-						<td>Defense</td>
-						<td>
-							{ stats[ 2 ].base_stat }
-							<RangeView value={ stats[ 2 ].base_stat } />
-						</td>
-					</tr>
-
-					<tr>
-						<td>Sp. Atk</td>
-						<td>
-							{ stats[ 3 ].base_stat }
-							<RangeView value={ stats[ 3 ].base_stat } />
-						</td>
-					</tr>
-
-					<tr>
-						<td>Sp. Def</td>
-						<td>
-							{ stats[ 4 ].base_stat }
-							<RangeView value={ stats[ 4 ].base_stat } />
-						</td>
-					</tr>
-
-					<tr>
-						<td>Speed</td>
-						<td>
-							{ stats[ 5 ].base_stat }
-							<RangeView value={ stats[ 5 ].base_stat } />
-						</td>
-					</tr>
+					{
+						labels.map( ( label, i ) => (
+							<tr key={ label }>
+								<td>{ label }</td>
+								<td>
+									{ stats[ i ].base_stat }
+									<RangeView value={ stats[ i ].base_stat } />
+								</td>
+							</tr>
+						) )
+					}
 
 					<tr>
 						<td>Total</td>
@@ -69,9 +36,7 @@ function BaseStats( { stats } ) {
 						</td>
 					</tr>
 				</tbody>
-
 			</table>
-
 		</div>
 	);
 }

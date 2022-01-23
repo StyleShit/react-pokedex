@@ -1,31 +1,46 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import About from './Tabs/About';
 import BaseStats from './Tabs/BaseStats';
 import Evolution from './Tabs/Evolution';
+import { getImageURL } from '../../utils';
 import './Details.css';
 
-function Details( { pokemon, setPokemonData } ) {
-	const [ tab, setTab ] = useState( 'about' );
+const TAB_ABOUT = 'about';
+const TAB_STATS = 'base-stats';
+const TAB_EVOLUTION = 'evolution';
+const TAB_DEFAULT = TAB_ABOUT;
 
-	// get pokemon image
-	const sprites = pokemon.sprites.other;
-	const imgURL = sprites.dream_world.front_default || sprites[ 'official-artwork' ].front_default;
+const tabs = [
+	{
+		id: TAB_ABOUT,
+		label: 'About',
+	},
+	{
+		id: TAB_STATS,
+		label: 'Base Stats',
+	},
+	{
+		id: TAB_EVOLUTION,
+		label: 'Evolution',
+	},
+];
 
-	// handle tab switching
-	const switchTab = ( e ) => {
-		e.preventDefault();
-		setTab( e.target.dataset.tab );
-	};
+function Details( { pokemon } ) {
+	const [ currentTab, setCurrentTab ] = useState( TAB_DEFAULT );
+	const imgURL = getImageURL( pokemon?.id );
 
-	// return tab switch class name
+	if ( ! pokemon ) {
+		return null;
+	}
+
+	// Return tab switch class name.
 	const getClassName = ( tabName ) => {
-		return `tab-switch ${ tab === tabName ? 'active' : '' }`;
+		return `tab-switch ${ currentTab === tabName ? 'active' : '' }`;
 	};
 
-	// change pokemon data & go to first tab
-	const changePokemon = ( pokemonData ) => {
-		setTab( 'about' );
-		setPokemonData( pokemonData );
+	// Change pokemon data & go to first tab.
+	const onPokemonChange = () => {
+		setCurrentTab( TAB_DEFAULT );
 	};
 
 	return (
@@ -34,27 +49,35 @@ function Details( { pokemon, setPokemonData } ) {
 			<img src={ imgURL } className="pokemon-image" alt={ pokemon.name } />
 
 			<div className="tabs-switch-container">
-
-				<button className={ getClassName( 'about' ) } data-tab="about" onClick={ switchTab }>About</button>
-				<button className={ getClassName( 'base-stats' ) } data-tab="base-stats" onClick={ switchTab }>Base Stats</button>
-				<button className={ getClassName( 'evolution' ) } data-tab="evolution" onClick={ switchTab }>Evolution</button>
-
+				{
+					tabs.map( ( { id, label } ) => (
+						<button key={ id } className={ getClassName( id ) } onClick={ () => setCurrentTab( id ) }>
+							{ label }
+						</button>
+					) )
+				}
 			</div>
 
-			{ tab === 'about' &&
-                <About pokemon={ pokemon } />
-			}
+			{
+				( () => {
+					switch ( currentTab ) {
+						case TAB_ABOUT:
+							return <About pokemon={ pokemon } />;
 
-			{ tab === 'base-stats' &&
-                <BaseStats stats={ pokemon.stats } />
-			}
+						case TAB_STATS:
+							return <BaseStats stats={ pokemon.stats } />;
 
-			{ tab === 'evolution' &&
-                <Evolution pokemon={ pokemon } changePokemon={ changePokemon } />
+						case TAB_EVOLUTION:
+							return <Evolution pokemon={ pokemon } onPokemonChange={ onPokemonChange } />;
+
+						default:
+							return null;
+					}
+				} )()
 			}
 
 		</div>
 	);
 }
 
-export default Details;
+export default memo( Details );

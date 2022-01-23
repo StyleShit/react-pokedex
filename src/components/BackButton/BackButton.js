@@ -1,10 +1,8 @@
-import React from 'react';
+import { memo } from 'react';
 import './BackButton.css';
 
 function BackButton( { onClick } ) {
-	return (
-		<div className="back-button" onClick={ onClick }></div>
-	);
+	return <div className="back-button" onClick={ onClick } />;
 }
 
-export default BackButton;
+export default memo( BackButton );

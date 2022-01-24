@@ -1,3 +1,5 @@
+import generations from './data/generations';
+
 /**
  * Recursively iterate over an evolution chain and normalize into an array.
  *
@@ -58,4 +60,20 @@ export const getImageURL = ( pokemonId ) => {
 
 	// Has SVG.
 	return `${ baseURL }/dream-world/${ pokemonId }.svg`;
+};
+
+/**
+ * Get generation object by pokemon ID.
+ *
+ * @param {number} id - Pokemon ID.
+ *
+ * @returns {Object}
+ */
+export const getGenerationByPokemonId = ( id ) => {
+	return generations.find( ( { offset, limit } ) => {
+		const firstId = offset + 1;
+		const lastId = firstId + limit;
+
+		return id >= firstId && id <= lastId;
+	} );
 };

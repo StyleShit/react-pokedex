@@ -1,8 +1,16 @@
 const BASE_URL = 'https://pokeapi.co/api/v2/';
 
+const cache = {};
+
 // Make a GET request to 'PokeAPI'.
-const get = ( endpoint ) => {
-	return fetch( BASE_URL + endpoint ).then( ( res ) => res.json() );
+const get = async ( endpoint ) => {
+	if ( ! cache[ endpoint ] ) {
+		const data = await fetch( BASE_URL + endpoint ).then( ( res ) => res.json() );
+
+		cache[ endpoint ] = data;
+	}
+
+	return Promise.resolve( cache[ endpoint ] );
 };
 
 // Fetch all pokemons.

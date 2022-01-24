@@ -10,7 +10,7 @@ const get = async ( endpoint ) => {
 		cache[ endpoint ] = data;
 	}
 
-	return Promise.resolve( cache[ endpoint ] );
+	return cache[ endpoint ];
 };
 
 // Fetch all pokemons.
